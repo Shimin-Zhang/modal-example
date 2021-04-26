@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Container from './Container';
 
 ReactDOM.render(
   <React.StrictMode>
-      <div> Hello world </div>
+    <Container />
   </React.StrictMode>,
   // The WP version with shortcode
   // document.getElementById('calculator-root')
