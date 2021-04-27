@@ -12,8 +12,10 @@ module.exports = {
       red: colors.rose,
       yellow: colors.amber
     },
-    extend: {
-    },
+    maxHeight: {
+      '72/100': '72%',
+      '85/100': '85%'
+    }
   },
   variants: {
     extend: {},
