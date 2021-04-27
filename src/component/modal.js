@@ -5,7 +5,7 @@ export default function Modal(props) {
   const {
     open=false,
     setOpen= () => {},
-    title = "Did you Know? A crocodile cannot stick its tongue out.",
+    title = "A crocodile cannot stick its tongue out.",
     titleIcon = "",
     options = {},
     children
@@ -35,14 +35,14 @@ export default function Modal(props) {
   const CloseIcon = () => {
     return  (
       <div className="w-full flex flex-grow flex-row-reverse z-20">
-        <span className="cursor-pointer pt-4 pr-4 fixed" onClick={closeModal}>X</span>
+        <span className="cursor-pointer pt-6 pr-8 fixed" onClick={closeModal}>X</span>
       </div>
     );
   };
 
   const Title = () => {
-    return (<div className="fixed t-0 pt-5 px-7 text-xl bg-gray-50 flex-grow">
-      <h2 className="text-gray-700 leading-loose text-tracking-wide font-semibold text-left capitalize align-baseline">
+    return (<div className="fixed full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 t-0 pt-10 pb-3 px-7 text-xl bg-gray-50">
+      <h2 className="text-gray-700 font-semibold text-left capitalize align-baseline">
         {title}
       </h2>
     </div>);
@@ -50,7 +50,7 @@ export default function Modal(props) {
 
 
   const Body = () => {
-    return (<div className="w-full mt-20 px-7 text-left">
+    return (<div className="w-full mt-24 px-7 text-left overflow-y-scroll">
       <DummyMaxData />
       { children }
     </div>
@@ -59,14 +59,22 @@ export default function Modal(props) {
 
   const Actions = () => {
     return (
-      <div>
-        <button />
+      <div className="px-7 mt-4 flex flex-row flex-wrap">
+        <div className="mx-auto w-full full:w-1/2 px-0 full:px-4 my-6">
+          <button className="w-full text-white text-xl rounded px-0 full:px-4 py-2 bg-indigo-500 hover:bg-indigo-600"> Action </button>
+        </div>
+        <div className="mx-auto w-full full:w-1/2 px-0 full:px-4 my-6">
+          <button className="w-full text-white text-xl rounded px-0 full:px-4 py-2 bg-indigo-500 hover:bg-indigo-600"> Action </button>
+        </div>
+        <div className="mx-auto w-full full:w-1/2 px-0 full:px-4 my-4">
+          <button className="w-full text-white text-xl rounded px-4 py-2 bg-indigo-500 hover:bg-indigo-600"> Action </button>
+        </div>
       </div>
     )
   };
 
   const ModalBody = () => {
-    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 overflow-y-scroll flex flex-col rounded-sm pb-7" >
+    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-2" >
       <div className="t-0 flex w-full bg-gray-50 ">
         <CloseIcon />
         <Title />
