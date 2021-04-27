@@ -15,6 +15,12 @@ module.exports = {
     maxHeight: {
       '72/100': '72%',
       '85/100': '85%'
+    },
+    screens: {
+      'full': '600px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1526px'
     }
   },
   variants: {
