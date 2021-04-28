@@ -7,6 +7,7 @@ export default function Modal(props) {
   const {
     open = false,
     setOpen = () => {},
+    cleanUp = () => {},
     title = {
       content: "",
       icon: {
@@ -15,6 +16,7 @@ export default function Modal(props) {
         color: 'red'
       }
     },
+    content = "",
     children,
     actions = [ { text: 'Ok' }]
   } = props;
@@ -33,22 +35,13 @@ export default function Modal(props) {
   const closeModalBg = (e) => {
     if (e.target.id === 'modal-bg') {
       setOpen(false);
+      cleanUp();
     }
   };
 
   const closeModal = () => {
     setOpen(false);
-  }
-
-
-  const DummyMaxData = () => {
-    const className ="text-xl";
-    return (
-      <>
-        <p className={className}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin vulputate mattis. Vivamus risus urna, dapibus et eros non, commodo dictum nisi. Sed orci tellus, consequat ac neque at, blandit aliquet nibh. Praesent non leo vel mi elementum varius. Aenean placerat consequat augue id ornare. Aenean ut vehicula tortor. Phasellus quam velit, egestas eu est nec, lacinia facilisis ex. Quisque sollicitudin libero felis, in malesuada nulla tristique quis. Maecenas ullamcorper augue at enim volutpat faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec consectetur bibendum justo, id accumsan sem porta sit amet. Vivamus dictum, ante id consectetur eleifend, odio mauris auctor risus, sit amet auctor augue augue et dui. Donec sed placerat erat. Praesent eros diam, aliquet egestas porttitor a, mollis sit amet felis. In dapibus tellus orci, quis fringilla lorem pharetra sit amet. Vivamus a ante facilisis, sollicitudin orci in, placerat nisi.
-        </p>
-      </>
-    )
+    cleanUp();
   }
 
   const CloseIcon = () => {
@@ -80,9 +73,13 @@ export default function Modal(props) {
   };
 
 
+  const TextContent = () => {
+    return (content && <p className="text-xl">{content}</p>)
+  };
+
   const Body = () => {
     return (<div className="w-full mt-24 px-12 text-left overflow-y-scroll">
-      <DummyMaxData />
+      <TextContent />
       { children }
     </div>
     );
@@ -128,7 +125,7 @@ export default function Modal(props) {
     )
   };
 
-  const ModalBody = () => {
+  const ModalMain = () => {
     return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-12" >
       <div className="t-0 flex w-full bg-gray-50 ">
         <CloseIcon />
@@ -144,7 +141,7 @@ export default function Modal(props) {
     (
       <>
         <div id="modal-bg" onClick={closeModalBg} className="fixed top-0 h-full w-screen bg-gray-700 bg-opacity-75 top-0 flex flex-col justify-center transition-opacity duration-500">
-          <ModalBody />
+          <ModalMain />
         </div>
       </>
     )

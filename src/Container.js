@@ -54,8 +54,7 @@ export default function Container() {
     }
   ];
 
-  const modal2Actions = [
-  ];
+  const modal1Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin vulputate mattis. Vivamus risus urna, dapibus et eros non, commodo dictum nisi. Sed orci tellus, consequat ac neque at, blandit aliquet nibh. Praesent non leo vel mi elementum varius. Aenean placerat consequat augue id ornare. Aenean ut vehicula tortor. Phasellus quam velit, egestas eu est nec, lacinia facilisis ex. Quisque sollicitudin libero felis, in malesuada nulla tristique quis. Maecenas ullamcorper augue at enim volutpat faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec consectetur bibendum justo, id accumsan sem porta sit amet. Vivamus dictum, ante id consectetur eleifend, odio mauris auctor risus, sit amet auctor augue augue et dui. Donec sed placerat erat. Praesent eros diam, aliquet egestas porttitor a, mollis sit amet felis. In dapibus tellus orci, quis fringilla lorem pharetra sit amet. Vivamus a ante facilisis, sollicitudin orci in, placerat nisi.";
 
   const modal2Title = {
     content: "Some fungi create zombies, then control their minds",
@@ -79,12 +78,21 @@ export default function Container() {
       </div>
       <button onClick={toggleModal1} className ="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Toggle Modal 1</button>
 
-      <Modal key={1} open={modal1Open} setOpen={setModal1Open} title={modal1Title} actions={modal1Actions} />
+      <Modal key={1} open={modal1Open} setOpen={setModal1Open} title={modal1Title} actions={modal1Actions} content={modal1Content}/>
 
       <button onClick={toggleModal2} className ="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-5">Toggle Modal 2</button>
 
       <Modal key={2} open={modal2Open} setOpen={setModal2Open}
-        title={modal2Title} />
+        title={modal2Title} >
+        <div className="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
+          <label for="hero-field" className="leading-7 text-sm text-gray-600">Placeholder 1</label>
+          <input type="text" name="hero-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <label for="hero-field" className="leading-7 text-sm text-gray-600">Placeholder 2</label>
+          <input type="text" name="hero-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <label for="hero-field" className="leading-7 text-sm text-gray-600">Placeholder 3</label>
+          <input type="text" name="hero-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        </div>
+      </Modal>
     </>
   )
 };
