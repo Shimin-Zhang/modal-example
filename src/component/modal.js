@@ -7,7 +7,10 @@ export default function Modal(props) {
   const {
     open = false,
     setOpen = () => {},
-    cleanUp = () => {},
+    onOpen = () => {},
+    onClose = () => {},
+    onMount = () => {},
+    onUnmount = () => {},
     title = {
       content: "",
       icon: {
@@ -18,8 +21,16 @@ export default function Modal(props) {
     },
     content = "",
     children,
-    actions = [ { text: 'Ok' }]
+    actions = [ { text: 'Ok' }],
+    key=""
   } = props;
+
+  useEffect(() => {
+    onMount();
+    return () => {
+      onUnmount();
+    };
+  }, []);
 
   const icons = {
     ok: (
@@ -35,23 +46,23 @@ export default function Modal(props) {
   const closeModalBg = (e) => {
     if (e.target.id === 'modal-bg') {
       setOpen(false);
-      cleanUp();
+      onClose();
     }
   };
 
   const closeModal = () => {
     setOpen(false);
-    cleanUp();
+    onClose ();
   }
 
   const CloseIcon = () => {
     return  (
       <div className="w-full flex flex-grow flex-row-reverse z-20">
-        <span className="cursor-pointer pt-4 pr-6 fixed" onClick={closeModal}>
+        <button aria-label="close-dialog" className="cursor-pointer pt-4 pr-6 fixed" onClick={closeModal}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
-        </span>
+        </button>
       </div>
     );
   };
@@ -66,7 +77,7 @@ export default function Modal(props) {
   const Title = () => {
     return (<div className="fixed flex flex-row full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 t-0 pt-10 pb-3 px-12 text-xl bg-gray-50">
       <TitleIcon />
-      <h2 className="text-gray-700 font-semibold text-left capitalize">
+      <h2 className="text-gray-700 font-semibold text-left capitalize" id={`modal-${key}-title`}>
         {title?.content}
       </h2>
     </div>);
@@ -74,11 +85,11 @@ export default function Modal(props) {
 
 
   const TextContent = () => {
-    return (content && <p className="text-xl">{content}</p>)
+    return (content && <p className="text-xl" id={`modal-${key}-content`}>{content}</p>)
   };
 
   const Body = () => {
-    return (<div className="w-full mt-24 px-12 text-left overflow-y-scroll">
+    return (<div className="w-full mt-28 px-12 text-left overflow-y-scroll">
       <TextContent />
       { children }
     </div>
@@ -126,7 +137,7 @@ export default function Modal(props) {
   };
 
   const ModalMain = () => {
-    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-12" >
+    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-6" role="dialog" aria-labelledby={ `modal-${key}-title`} aria-describedby={`modal-${key}-content`}>
       <div className="t-0 flex w-full bg-gray-50 ">
         <CloseIcon />
         <Title />
@@ -140,7 +151,7 @@ export default function Modal(props) {
     open &&
     (
       <>
-        <div id="modal-bg" onClick={closeModalBg} className="fixed top-0 h-full w-screen bg-gray-700 bg-opacity-75 top-0 flex flex-col justify-center transition-opacity duration-500">
+        <div id="modal-bg" onClick={closeModalBg} className="fixed top-0 h-full w-screen bg-gray-700 bg-opacity-75 top-0 flex flex-col justify-center transition-opacity duration-500" role="none">
           <ModalMain />
         </div>
       </>
