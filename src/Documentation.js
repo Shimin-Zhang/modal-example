@@ -34,7 +34,7 @@ export default function Documentation ({ role }) {
         {role && <div className="flex flex-col text-center w-full mb-20">
           <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">API</h2>
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Component Props</h1>
-          <Highlight className="text-left mb-5" language="JavaScript">
+          <Highlight className="text-left mb-5 mx-auto container px-20" language="JavaScript">
             {`
     const [modal1Open, setModal1Open] = useState(false);
     const toggleModal1= () => {
@@ -89,10 +89,10 @@ export default function Documentation ({ role }) {
     const onUnmount=() => {
       console.log('unmounted button 1');
     };
-    
+
     const modal1Content = "Lorem ipsum dolor sit amet, consectetur \n adipiscing elit. Vivamus sollicitudin vulputate mattis. Vivamus \n risus urna, dapibus et eros non, commodo dictum nisi. Sed orci \n tellus, consequat ac neque at, blandit aliquet nibh. Praesent non \n leo vel mi elementum varius. Aenean placerat consequat augue id \n ornare. Aenean ut vehicula tortor. Phasellus quam velit, egestas \n eu est nec, lacinia facilisis ex. Quisque sollicitudin libero \n felis, in malesuada nulla tristique quis. Maecenas ullamcorper \n augue at enim volutpat faucibus. Pellentesque habitant morbi \n tristique senectus et netus et malesuada fames ac turpis egestas. \nDonec consectetur bibendum justo, id accumsan sem porta sit amet. \nVivamus dictum, ante id consectetur eleifend, odio mauris auctor \nrisus, sit amet auctor augue augue et dui. Donec sed placerat \nerat. Praesent eros diam, aliquet egestas porttitor a, mollis sit \namet felis. In dapibus tellus orci, quis fringilla lorem pharetra \nsit amet. Vivamus a ante facilisis, sollicitudin orci in, \nplacerat nisi.";
 
-  <Modal key={1} num={1} open={modal1Open} setOpen={setModal1Open} title={modal1Title} actions={modal1Actions} content={modal1Content}/>
+  <Modal key={1} num={1} open={modal1Open} setOpen={setModal1Open} title={modal1Title} actions={modal1Actions} content={modal1Content} \n \t onUnmount={onUnmount} onMount={onMount}/>
         `}
           </Highlight>
 
