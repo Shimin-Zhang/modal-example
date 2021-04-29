@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 export default function Modal(props) {
 
@@ -137,7 +137,7 @@ export default function Modal(props) {
   };
 
   const ModalMain = () => {
-    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-6" role="dialog" aria-labelledby={ `modal-${key}-title`} aria-describedby={`modal-${key}-content`}>
+    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-6" aria-modal="true" role="dialog" aria-labelledby={ `modal-${key}-title`} aria-describedby={`modal-${key}-content`}>
       <div className="t-0 flex w-full bg-gray-50 ">
         <CloseIcon />
         <Title />
@@ -147,11 +147,19 @@ export default function Modal(props) {
     </div>;
   };
 
+  const bgClass = useMemo(() => {
+    let c = "fixed top-0 left-0 h-full w-screen bg-gray-700 bg-opacity-75 top-0 flex flex-col justify-center transition-opacity duration-500";
+    if (!open) {
+      c = c + " hidden";
+    }
+    return c;
+  }, [open]);
+
   return (
     open &&
     (
       <>
-        <div id="modal-bg" onClick={closeModalBg} className="fixed top-0 h-full w-screen bg-gray-700 bg-opacity-75 top-0 flex flex-col justify-center transition-opacity duration-500" role="none">
+        <div id="modal-bg" onClick={closeModalBg} className={bgClass} role="none">
           <ModalMain />
         </div>
       </>

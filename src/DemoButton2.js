@@ -1,9 +1,8 @@
+
 import React, { useState } from 'react';
 import Modal from './component/Modal';
-import Documentation from './Documentation';
-import Header from './Header';
 
-export default function Container() {
+export default function DemoModal2() {
   const [modal2Open, setModal2Open] = useState(false);
 
 
@@ -23,10 +22,6 @@ export default function Container() {
 
   return (
     <>
-      <Header />
-
-      <Documentation />
-
       <button onClick={toggleModal2} className ="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-5">Toggle Modal 2</button>
 
       <Modal key={2} open={modal2Open} setOpen={setModal2Open}
@@ -41,5 +36,5 @@ export default function Container() {
         </div>
       </Modal>
     </>
-  )
+  );
 };
