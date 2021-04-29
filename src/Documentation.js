@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DemoButton1 from './DemoButton1';
 import DemoButton2 from './DemoButton2';
 
-export default function Documentation () {
+export default function Documentation ({ role }) {
 
   return (
     <section class="text-gray-600 body-font">
@@ -30,13 +30,13 @@ export default function Documentation () {
           </p>
         </div>
 
-        <div class="flex flex-col text-center w-full mb-20">
+        {role && <div class="flex flex-col text-center w-full mb-20">
           <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">API</h2>
           <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Component Props</h1>
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla placerat velit. Fusce orci quam, aliquam sed libero in, aliquam lobortis purus. Integer id ipsum ultricies, condimentum ipsum id, congue metus. Pellentesque eget feugiat justo. Phasellus at ex nulla. Sed pretium, est non fringilla iaculis, mauris massa cursus velit, vel semper eros magna et odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate est et quam aliquet feugiat. Curabitur quis fermentum est. Phasellus euismod auctor est, id varius urna maximus lobortis. Nam id dolor suscipit dui varius tristique.
           </p>
-        </div>
+        </div>}
 
         <div class="flex flex-col text-center w-full mb-20">
           <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Use Cases</h2>
@@ -46,12 +46,12 @@ export default function Documentation () {
           </p>
         </div>
 
-        <div class="flex flex-col text-center w-full mb-20">
+        {role && <div class="flex flex-col text-center w-full mb-20">
           <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Sandbox</h2>
           <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Try It Yourself</h1>
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
           </p>
-        </div>
+        </div>}
 
         <div class="flex flex-col text-center w-full mb-20">
           <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Best Practices</h2>
