@@ -24,7 +24,7 @@ export default function DemoModal2() {
     <>
       <button onClick={toggleModal2} className ="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-5">Toggle Modal 2</button>
 
-      <Modal key={2} open={modal2Open} setOpen={setModal2Open}
+      <Modal key={2} num={2} open={modal2Open} setOpen={setModal2Open}
         title={modal2Title} >
         <div className="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
           <label for="hero-field" className="leading-7 text-sm text-gray-600">Placeholder 1</label>

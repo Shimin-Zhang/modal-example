@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 export default function Modal(props) {
 
@@ -22,7 +22,7 @@ export default function Modal(props) {
     content = "",
     children,
     actions = [ { text: 'Ok' }],
-    key=""
+    num="0"
   } = props;
 
   useEffect(() => {
@@ -32,10 +32,17 @@ export default function Modal(props) {
     };
   }, []);
 
+
+  useEffect(() => {
+    if (open) {
+      onOpen();
+    }
+  }, [open, onOpen]);
+
   const icons = {
     ok: (
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
       </svg>),
     alert: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
@@ -77,7 +84,7 @@ export default function Modal(props) {
   const Title = () => {
     return (<div className="fixed flex flex-row full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 t-0 pt-10 pb-3 px-12 text-xl bg-gray-50">
       <TitleIcon />
-      <h2 className="text-gray-700 font-semibold text-left capitalize" id={`modal-${key}-title`}>
+      <h2 className="text-gray-700 font-semibold text-left capitalize" id={`modal-${num}-title`}>
         {title?.content}
       </h2>
     </div>);
@@ -85,7 +92,7 @@ export default function Modal(props) {
 
 
   const TextContent = () => {
-    return (content && <p className="text-xl" id={`modal-${key}-content`}>{content}</p>)
+    return (content && <p className="text-xl" id={`modal-${num}-content`}>{content}</p>)
   };
 
   const Body = () => {
@@ -137,7 +144,7 @@ export default function Modal(props) {
   };
 
   const ModalMain = () => {
-    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-6" aria-modal="true" role="dialog" aria-labelledby={ `modal-${key}-title`} aria-describedby={`modal-${key}-content`}>
+    return <div className="w-full min-h-full mx-auto full:w-3/4 full:min-h-0 full:max-h-72/100 xl:max-h-85/100 lg:w-8/12 2xl:w-1/2 bg-gray-50 flex flex-col rounded-sm pb-6" aria-modal="true" role="dialog" aria-labelledby={ `modal-${num}-title`} aria-describedby={`modal-${num}-content`}>
       <div className="t-0 flex w-full bg-gray-50 ">
         <CloseIcon />
         <Title />
