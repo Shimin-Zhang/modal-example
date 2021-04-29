@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DemoButton1 from './DemoButton1';
 import DemoButton2 from './DemoButton2';
+import Highlight from 'react-highlight.js';
 
 export default function Documentation ({ role }) {
 
@@ -33,6 +34,60 @@ export default function Documentation ({ role }) {
         {role && <div class="flex flex-col text-center w-full mb-20">
           <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">API</h2>
           <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Component Props</h1>
+          <Highlight className="text-left mb-5" language="JavaScript">
+            {`
+    const [modal1Open, setModal1Open] = useState(false);
+    const toggleModal1= () => {
+      setModal1Open(!modal1Open);
+    };
+
+    const modal1Title = {
+      content: "A crocodile cannot stick its tongue out",
+      icon: {
+        type: 'ok',
+        color: 'green'
+      }
+    };
+
+    const toggleSuccess = () => {
+      const notice = document.getElementById('success-notice');
+      notice.classList.toggle('hidden');
+      setTimeout(() => {
+        notice.classList.toggle('hidden');
+      }, 3000);
+    };
+
+    const toggleFailure = () => {
+      const notice = document.getElementById('failure-notice');
+      notice.classList.toggle('hidden');
+      setTimeout(() => {
+        notice.classList.toggle('hidden');
+      }, 3000);
+    };
+
+    const modal1Actions = [
+      {
+        text: 'Success',
+        theme: 'green-dark',
+        action: toggleSuccess
+      },
+      {
+        text: 'Failure',
+        theme: 'red-dark',
+        action: toggleFailure
+      },
+      {
+        text: 'Cancel',
+        theme: 'indigo-light',
+      }
+    ];
+
+    const modal1Content = "Lorem ipsum dolor sit amet, consectetur \n adipiscing elit. Vivamus sollicitudin vulputate mattis. Vivamus \n risus urna, dapibus et eros non, commodo dictum nisi. Sed orci \n tellus, consequat ac neque at, blandit aliquet nibh. Praesent non \n leo vel mi elementum varius. Aenean placerat consequat augue id \n ornare. Aenean ut vehicula tortor. Phasellus quam velit, egestas \n eu est nec, lacinia facilisis ex. Quisque sollicitudin libero \n felis, in malesuada nulla tristique quis. Maecenas ullamcorper \n augue at enim volutpat faucibus. Pellentesque habitant morbi \n tristique senectus et netus et malesuada fames ac turpis egestas. \nDonec consectetur bibendum justo, id accumsan sem porta sit amet. \nVivamus dictum, ante id consectetur eleifend, odio mauris auctor \nrisus, sit amet auctor augue augue et dui. Donec sed placerat \nerat. Praesent eros diam, aliquet egestas porttitor a, mollis sit \namet felis. In dapibus tellus orci, quis fringilla lorem pharetra \nsit amet. Vivamus a ante facilisis, sollicitudin orci in, \nplacerat nisi.";
+
+  <Modal key={1} open={modal1Open} setOpen={setModal1Open} title={modal1Title} actions={modal1Actions} content={modal1Content}/>
+        `}
+          </Highlight>
+
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla placerat velit. Fusce orci quam, aliquam sed libero in, aliquam lobortis purus. Integer id ipsum ultricies, condimentum ipsum id, congue metus. Pellentesque eget feugiat justo. Phasellus at ex nulla. Sed pretium, est non fringilla iaculis, mauris massa cursus velit, vel semper eros magna et odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate est et quam aliquet feugiat. Curabitur quis fermentum est. Phasellus euismod auctor est, id varius urna maximus lobortis. Nam id dolor suscipit dui varius tristique.
           </p>
